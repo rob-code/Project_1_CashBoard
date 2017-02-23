@@ -13,19 +13,24 @@ class User
     @monthly_budget = options['monthly_budget'].to_f
   end
 
-def save
-sql = "INSERT INTO users (first_name, second_name, monthly_budget) VALUES ('#{@first_name}', '#{@second_name}',#{@monthly_budget}) RETURNING id"
-user = SqlRunner.run(sql).first
-@id = user['id'].to_i
+  def save
+    sql = "INSERT INTO users (first_name, second_name, monthly_budget) VALUES ('#{@first_name}', '#{@second_name}',#{@monthly_budget}) RETURNING id"
+    user = SqlRunner.run(sql).first
+    @id = user['id'].to_i
+  end
 
-end
-
-def self.delete_all
-  sql = "DELETE FROM users"
-  SqlRunner.run(sql)
-end
+  def self.delete_all
+    sql = "DELETE FROM users"
+    SqlRunner.run(sql)
+  end
 
 
+
+  def self.get_many(sql)
+    users = SqlRunner.run(sql)
+    result = users.map {|user| Users.new(user)}
+    return result
+  end
 
 
 end

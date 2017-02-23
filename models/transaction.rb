@@ -25,6 +25,12 @@ class Transaction
   end
 
 
+  def self.get_many(sql)
+    transactions = SqlRunner.run(sql)
+    result = transactions.map {|transaction| Transaction.new(transaction)}
+    return result
+  end
+
 
 
 end
