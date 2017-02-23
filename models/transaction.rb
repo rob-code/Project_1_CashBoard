@@ -25,6 +25,19 @@ class Transaction
   end
 
 
+  def self.all
+  sql = "SELECT * FROM transactions"
+  return self.get_many(sql)
+  end
+
+  def self.return_by_id(id_required)
+  sql = "SELECT * FROM transactions WHERE id = #{id_required}"
+  return SqlRunner.run(sql)
+  end
+
+
+
+
   def self.get_many(sql)
     transactions = SqlRunner.run(sql)
     result = transactions.map {|transaction| Transaction.new(transaction)}

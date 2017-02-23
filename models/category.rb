@@ -21,7 +21,15 @@ class Category
     SqlRunner.run(sql)
   end
 
+  def self.all
+  sql = "SELECT * FROM categories"
+  return self.get_many(sql)
+  end
 
+  def self.return_by_id(id_required)
+  sql = "SELECT * FROM categories WHERE id = #{id_required}"
+  return SqlRunner.run(sql)
+  end
 
 
   def self.get_many(sql)

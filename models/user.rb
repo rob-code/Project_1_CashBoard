@@ -24,11 +24,19 @@ class User
     SqlRunner.run(sql)
   end
 
+def self.all
+sql = "SELECT * FROM users"
+return self.get_many(sql)
+end
 
+def self.return_by_id(id_required)
+sql = "SELECT * FROM users WHERE id = #{id_required}"
+return SqlRunner.run(sql)
+end
 
   def self.get_many(sql)
     users = SqlRunner.run(sql)
-    result = users.map {|user| Users.new(user)}
+    result = users.map {|user| User.new(user)}
     return result
   end
 
