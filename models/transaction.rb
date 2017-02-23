@@ -1,8 +1,8 @@
-require_relative('../db/sqlrunner.rb')
+require_relative('../db/sql_runner.rb')
 
 class Transaction
 
-  attr_accessor :merchant_name, :amount, :category_id,
+  attr_accessor :merchant_name, :amount, :category_id
   attr_reader :id, :user_id
 
   def initialize (options)
