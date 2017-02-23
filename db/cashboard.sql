@@ -9,7 +9,8 @@ category_name VARCHAR(255)
 
 CREATE TABLE users(
 id SERIAL8 primary key,
-name VARCHAR(255),
+first_name VARCHAR(255),
+second_name VARCHAR(255),
 monthly_budget NUMERIC(6,2)
 );
 
