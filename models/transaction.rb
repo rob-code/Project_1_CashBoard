@@ -13,7 +13,16 @@ class Transaction
     @user_id = options['user_id'].to_i
   end
 
+  def save()
+    sql = "INSERT INTO transactions (merchant_name, amount, category_id, user_id) VALUES ('#{@merchant_name}', #{@amount}, #{@category_id}, #{@user_id})RETURNING id"
+    transaction = SqlRunner.run(sql).first
+    @id = transaction['id'].to_i
+  end
 
+  def self.delete_all()
+    sql = "DELETE FROM transactions"
+    SqlRunner.run(sql)
+  end
 
 
 

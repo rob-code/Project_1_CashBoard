@@ -3,9 +3,9 @@ require_relative( '../models/category.rb' )
 require_relative( '../models/transaction.rb' )
 require('pry-byebug')
 
-# User.delete_all
-# Category.delete_all
-# Transaction.delete_all
+User.delete_all
+Category.delete_all
+Transaction.delete_all
 
 user1 = User.new({
 'first_name' => "Rich",
@@ -18,6 +18,10 @@ user2 = User.new({
 'second_name' => "Person",
 'monthly_budget' => 800
 })
+
+user1.save
+user2.save
+
 
 category1 = Category.new({
 'category_name' => "Food"
@@ -41,6 +45,13 @@ category7 = Category.new({
 'category_name' => "Cinema"
 })
 
+category1.save
+category2.save
+category3.save
+category4.save
+category5.save
+category6.save
+category7.save
 
 transaction1 = Transaction.new({
 'merchant_name' => "Waitrose",
@@ -67,3 +78,7 @@ transaction4 = Transaction.new({
 'user_id' => user2.id
 })
 
+transaction1.save
+transaction2.save
+transaction3.save
+transaction4.save
