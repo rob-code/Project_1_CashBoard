@@ -11,6 +11,13 @@ class User
     @second_name = options['second_name']
   end
 
+  def transactions
+    sql = "SELECT transactions.* FROM 
+    transactions WHERE transactions.user_id = #{@id}"
+    return Transaction.get_many(sql)
+  end
+
+
   def save
     sql = "INSERT INTO users (first_name, second_name) VALUES ('#{@first_name}', '#{@second_name}') RETURNING id"
     user = SqlRunner.run(sql).first
