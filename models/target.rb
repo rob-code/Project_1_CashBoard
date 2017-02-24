@@ -2,18 +2,18 @@ require_relative('../db/sql_runner.rb')
 
 class Target
 
-  attr_accessor :target_amount, :category_id
+  attr_accessor :amount, :category_id
   attr_reader :id, :user_id
 
   def initialize (options)
     @id = options['id'].to_i
-    @target_amount = options['target_amount'].to_f
+    @amount = options['amount'].to_f
     @category_id = options['category_id'].to_i
     @user_id = options['user_id'].to_i
   end
 
   def save
-    sql = "INSERT INTO targets (target_amount, category_id, user_id) VALUES (#{@target_amount}, #{@category_id}, #{@user_id}) RETURNING id"
+    sql = "INSERT INTO targets (amount, category_id, user_id) VALUES (#{@amount}, #{@category_id}, #{@user_id}) RETURNING id"
     user = SqlRunner.run(sql).first
     @id = user['id'].to_i
   end
@@ -37,7 +37,7 @@ class Target
 
   def update()
     sql = "UPDATE targets SET
-    target_amount = #{@target_amount},
+    amount = #{@amount},
     category_id = #{@category_id},
     user_id = #{user_id}
     WHERE id = #{@id}"

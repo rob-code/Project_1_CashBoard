@@ -40,25 +40,25 @@ budget2.save
 
 
 category1 = Category.new({
-'category_name' => "Food"
+'name' => "Food"
 })
 category2 = Category.new({
-'category_name' => "Electricity Bill"
+'name' => "Electricity Bill"
 })
 category3 = Category.new({
-'category_name' => "Gas Bill"
+'name' => "Gas Bill"
 })
 category4 = Category.new({
-'category_name' => "Mobile Phone Bill"
+'name' => "Mobile Phone Bill"
 })
 category5 = Category.new({
-'category_name' => "Eating Out"
+'name' => "Eating Out"
 })
 category6 = Category.new({
-'category_name' => "Clothes"
+'name' => "Clothes"
 })
 category7 = Category.new({
-'category_name' => "Cinema"
+'name' => "Cinema"
 })
 
 category1.save
@@ -71,23 +71,23 @@ category7.save
 
 
 target1 = Target.new({
-'target_amount' => 30,
+'amount' => 30,
 'category_id' => category1.id,
 'user_id' => user1.id
 })
 target2 = Target.new({
-'target_amount' => 200,
+'amount' => 200,
 'category_id' => category6.id,
 'user_id' => user1.id
 })
 target3 = Target.new({
-'target_amount' => 25,
+'amount' => 25,
 'category_id' => category7.id,
 'user_id' => user2.id
 })
 
 target4 = Target.new({
-'target_amount' => 150,
+'amount' => 150,
 'category_id' => category1.id,
 'user_id' => user2.id
 })
