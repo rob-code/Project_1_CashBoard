@@ -17,6 +17,11 @@ class User
     return Transaction.get_many(sql)
   end
 
+  def total_spend
+    sql = "SELECT SUM(transactions.amount) FROM transactions WHERE transactions.user_id = #{@id}"
+    total_spend = SqlRunner.run(sql).first
+    return total_spend['sum'].to_f
+  end
 
   def save
     sql = "INSERT INTO users (first_name, second_name) VALUES ('#{@first_name}', '#{@second_name}') RETURNING id"
