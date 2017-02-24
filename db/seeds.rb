@@ -1,6 +1,9 @@
 require_relative( '../models/user.rb' )
+require_relative( '../models/budget.rb' )
 require_relative( '../models/category.rb' )
 require_relative( '../models/transaction.rb' )
+require_relative( '../models/target.rb' )
+
 require('pry-byebug')
 
 User.delete_all
@@ -9,18 +12,31 @@ Transaction.delete_all
 
 user1 = User.new({
 'first_name' => "Rich",
-'second_name' => "Person",
-'monthly_budget' => 3000
+'second_name' => "Person"
 })
 
 user2 = User.new({
 'first_name' => "Poor",
-'second_name' => "Person",
-'monthly_budget' => 800
+'second_name' => "Person"
 })
 
 user1.save
 user2.save
+
+budget1 = Budget.new({
+'total_budget' => 3000,
+'user_id' => user1.id
+})
+
+budget2 = Budget.new({
+'total_budget' => 800,
+'user_id' => user2.id
+})
+
+budget1.save
+budget2.save
+
+
 
 
 category1 = Category.new({
@@ -52,6 +68,40 @@ category4.save
 category5.save
 category6.save
 category7.save
+
+
+target1 = Target.new({
+'target_amount' => 30,
+'category_id' => category1.id,
+'user_id' => user1.id
+})
+target2 = Target.new({
+'target_amount' => 200,
+'category_id' => category6.id,
+'user_id' => user1.id
+})
+target3 = Target.new({
+'target_amount' => 25,
+'category_id' => category7.id,
+'user_id' => user2.id
+})
+
+target4 = Target.new({
+'target_amount' => 150,
+'category_id' => category1.id,
+'user_id' => user2.id
+})
+
+target1.save
+target2.save
+target3.save
+target4.save
+
+
+
+
+
+
 
 transaction1 = Transaction.new({
 'merchant_name' => "Waitrose",
