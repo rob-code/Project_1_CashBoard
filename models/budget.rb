@@ -23,37 +23,32 @@ class Budget
   end
 
   def self.all
-  sql = "SELECT * FROM budgets"
-  return self.get_many(sql)
+    sql = "SELECT * FROM budgets"
+    return self.get_many(sql)
   end
-
 
   def self.return_by_id(id_required)
-  sql = "SELECT * FROM budgets WHERE id = #{id_required}"
-  return SqlRunner.run(sql)
+    sql = "SELECT * FROM budgets WHERE id = #{id_required}"
+    return SqlRunner.run(sql)
   end
 
+  def update()
+    sql = "UPDATE budgets SET
+    total_budget = #{@total_budget},
+    user_id = #{@user_id}
+    WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
 
-
-
-
-
-
+  def self.delete_by_id(id_required)
+    sql = "DELETE FROM budgets WHERE id = #{id_required}"
+    SqlRunner.run(sql)
+  end
 
   def self.get_many(sql)
     budgets = SqlRunner.run(sql)
     result = budgets.map {|budget| Budget.new(budget)}
     return result
   end
-
-
-
-
-
-
-
-
-
-
 
 end

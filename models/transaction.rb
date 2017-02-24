@@ -26,24 +26,35 @@ class Transaction
 
 
   def self.all
-  sql = "SELECT * FROM transactions"
-  return self.get_many(sql)
+    sql = "SELECT * FROM transactions"
+    return self.get_many(sql)
   end
 
   def self.return_by_id(id_required)
-  sql = "SELECT * FROM transactions WHERE id = #{id_required}"
-  return SqlRunner.run(sql)
+    sql = "SELECT * FROM transactions WHERE id = #{id_required}"
+    return SqlRunner.run(sql)
   end
 
+  def update()
+    sql = "UPDATE transactions SET
+    merchant_name = '#{@merchant_name}',
+    amount = '#{@amount}',
+    category_id = '#{@category_id}',
+    user_id = '#{@user_id}'
+    WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
 
-
+  def self.delete_by_id(id_required)
+    sql = "DELETE FROM transactions WHERE id = #{id_required}"
+    SqlRunner.run(sql)
+  end
 
   def self.get_many(sql)
     transactions = SqlRunner.run(sql)
     result = transactions.map {|transaction| Transaction.new(transaction)}
     return result
   end
-
 
 
 end

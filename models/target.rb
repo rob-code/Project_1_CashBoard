@@ -35,6 +35,24 @@ class Target
   end
 
 
+  def update()
+    sql = "UPDATE targets SET
+    target_amount = #{@target_amount},
+    category_id = #{@category_id},
+    user_id = #{user_id}
+    WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
+
+
+
+
+  def self.delete_by_id(id_required)
+    sql = "DELETE FROM targets WHERE id = #{id_required}"
+    SqlRunner.run(sql)
+  end
+
+
 
   def self.get_many(sql)
     targets = SqlRunner.run(sql)

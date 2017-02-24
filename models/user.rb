@@ -1,6 +1,5 @@
 require_relative('../db/sql_runner.rb')
 
-
 class User
 
   attr_accessor :first_name, :second_name
@@ -23,15 +22,29 @@ class User
     SqlRunner.run(sql)
   end
 
-def self.all
-sql = "SELECT * FROM users"
-return self.get_many(sql)
-end
+  def self.all
+    sql = "SELECT * FROM users"
+    return self.get_many(sql)
+  end
 
-def self.return_by_id(id_required)
-sql = "SELECT * FROM users WHERE id = #{id_required}"
-return SqlRunner.run(sql)
-end
+  def self.return_by_id(id_required)
+    sql = "SELECT * FROM users WHERE id = #{id_required}"
+    return SqlRunner.run(sql)
+  end
+
+  def update()
+    sql = "UPDATE users SET
+    first_name = '#{@first_name}',
+    second_name = '#{@second_name}'
+    WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
+
+  def self.delete_by_id(id_required)
+    sql = "DELETE FROM users WHERE id = #{id_required}"
+    SqlRunner.run(sql)
+  end
+
 
   def self.get_many(sql)
     users = SqlRunner.run(sql)

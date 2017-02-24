@@ -22,15 +22,26 @@ class Category
   end
 
   def self.all
-  sql = "SELECT * FROM categories"
-  return self.get_many(sql)
+    sql = "SELECT * FROM categories"
+    return self.get_many(sql)
   end
 
   def self.return_by_id(id_required)
-  sql = "SELECT * FROM categories WHERE id = #{id_required}"
-  return SqlRunner.run(sql)
+    sql = "SELECT * FROM categories WHERE id = #{id_required}"
+    return SqlRunner.run(sql)
   end
 
+  def update()
+    sql = "UPDATE categories SET
+    category_name = '#{@category_name}'
+    WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
+
+  def self.delete_by_id(id_required)
+    sql = "DELETE FROM categories WHERE id = #{id_required}"
+    SqlRunner.run(sql)
+  end
 
   def self.get_many(sql)
     categories = SqlRunner.run(sql)
