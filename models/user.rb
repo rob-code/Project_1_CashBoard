@@ -23,6 +23,14 @@ class User
     return total_spend['sum'].to_f
   end
 
+def spend_by_category
+sql = "SELECT transactions.category_id, SUM(transactions.amount) FROM transactions WHERE transactions.user_id = #{@id} GROUP BY transactions.category_id"
+  totals = SqlRunner.run(sql)
+  totals.map do |total|
+    puts "#{total['category_id']} and #{total['sum']}"
+  end 
+end
+
   def save
     sql = "INSERT INTO users (first_name, second_name) VALUES ('#{@first_name}', '#{@second_name}') RETURNING id"
     user = SqlRunner.run(sql).first

@@ -127,11 +127,18 @@ transaction4 = Transaction.new({
 'category_id' => category6.id,
 'user_id' => user2.id
 })
+transaction5 = Transaction.new({
+'merchant_name' => "Tesco",
+'amount' => 18,
+'category_id' => category1.id,
+'user_id' => user1.id
+})
 
 transaction1.save
 transaction2.save
 transaction3.save
 transaction4.save
+transaction5.save
 
 binding.pry
 nil
