@@ -19,7 +19,8 @@ end
 
 get '/sub_cat/:id/:cat_id' do
   @user = User.return_by_id(params[:id])
-  @transactions = Transaction.subcategories(params[:id], params[:cat_id]) 
+  @transactions = Transaction.subcategories(params[:id], params[:cat_id])
+  @category = Category.return_by_id(params[:cat_id])
 
 erb(:category)
 end

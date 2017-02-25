@@ -2,5 +2,11 @@
 <p>Welcome <%= "#{@user.first_name}" %></p>
 </div>
 
-<p> this is the view by sub category page</p>
+<p>Transactions for <%= @category.name %></p>
 
+<% @transactions.map do |transaction| %>
+
+<p><%=transaction.merchant_name %> : <%=transaction.amount %> </p>
+<hr />
+
+<% end %>
