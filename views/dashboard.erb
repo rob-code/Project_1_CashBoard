@@ -13,9 +13,9 @@
 
 <% @user.spend_by_category.map do |total| %>
 
-<p><%=total['name'] %> : <%=total['sum'].to_f %></p>
+<p><%=total['name'] %> : <%=total['sum'].to_f %> </p>
 <p>View all transactions for <%=total['name'] %> </p>
-<a href="/sub_cat">View all transactions for <%=total['name'] %> </a>
+<a href="/sub_cat/<%= @user.id %>/<%= total['id'] %> ">View all transactions for <%=total['name'] %> </a>
 <hr />
 
 <% end %>
