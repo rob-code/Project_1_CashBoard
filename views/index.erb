@@ -1,0 +1,14 @@
+<h2>Please log in</h2>
+
+<h3>Accounts available:</h3>
+
+
+<hr/>
+<% @users.each do |user| %>
+<p>First Name: <%= user.first_name%></p>
+<p>Second Name: <%= user.second_name%></p>
+
+<p><a href="/login/<%= user.id %>">Use Money Cashboard as <%= user.first_name%> <%=user.id %></a></p>
+
+<hr/>
+<% end %>

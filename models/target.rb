@@ -24,16 +24,16 @@ class Target
   end
 
   def self.all
-  sql = "SELECT * FROM targets"
-  return self.get_many(sql)
+    sql = "SELECT * FROM targets"
+    return self.get_many(sql)
   end
-
 
   def self.return_by_id(id_required)
-  sql = "SELECT * FROM targets WHERE id = #{id_required}"
-  return SqlRunner.run(sql)
+    sql = "SELECT * FROM targets WHERE id = #{id_required}"
+    target = SqlRunner.run(sql)
+    result = Target.new(target.first)
+    return result
   end
-
 
   def update()
     sql = "UPDATE targets SET
@@ -44,15 +44,10 @@ class Target
     SqlRunner.run(sql)
   end
 
-
-
-
   def self.delete_by_id(id_required)
     sql = "DELETE FROM targets WHERE id = #{id_required}"
     SqlRunner.run(sql)
   end
-
-
 
   def self.get_many(sql)
     targets = SqlRunner.run(sql)

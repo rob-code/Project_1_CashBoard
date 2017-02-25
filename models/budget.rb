@@ -42,7 +42,9 @@ class Budget
 
   def self.delete_by_id(id_required)
     sql = "DELETE FROM budgets WHERE id = #{id_required}"
-    SqlRunner.run(sql)
+    budget = SqlRunner.run(sql)
+    result = Budget.new(budget.first)
+    return result
   end
 
   def self.get_many(sql)

@@ -24,7 +24,6 @@ class Transaction
     SqlRunner.run(sql)
   end
 
-
   def self.all
     sql = "SELECT * FROM transactions"
     return self.get_many(sql)
@@ -32,7 +31,9 @@ class Transaction
 
   def self.return_by_id(id_required)
     sql = "SELECT * FROM transactions WHERE id = #{id_required}"
-    return SqlRunner.run(sql)
+    transaction = SqlRunner.run(sql)
+    result = Transaction.new(transaction.first)
+    return result
   end
 
   def update()

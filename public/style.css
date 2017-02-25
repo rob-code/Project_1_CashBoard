@@ -1,0 +1,23 @@
+
+* {font-family: sans-serif, Arial;}
+
+li {
+    display: inline;
+    padding-right: 20px;
+}
+
+
+h1 {
+  background-color: #753434;
+  width: 100%;
+  color: #FFFFFF;
+  font-size: 30px;
+  font-style: bold;
+}
+
+
+.header-bar{
+background-color: #753434;
+width: 100%;
+color: #121212;
+}

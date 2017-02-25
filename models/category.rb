@@ -28,7 +28,9 @@ class Category
 
   def self.return_by_id(id_required)
     sql = "SELECT * FROM categories WHERE id = #{id_required}"
-    return SqlRunner.run(sql)
+    category = SqlRunner.run(sql)
+    result = Category.new(category.first)
+    return result
   end
 
   def update()
