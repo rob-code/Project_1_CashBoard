@@ -37,25 +37,31 @@ budget1.save
 budget2.save
 
 category1 = Category.new({
-'name' => "Food"
+'name' => 'Food'
 })
+
 category2 = Category.new({
-'name' => "Electricity Bill"
+'name' => 'Electricity Bill'
 })
+
 category3 = Category.new({
-'name' => "Gas Bill"
+'name' => 'Gas Bill'
 })
+
 category4 = Category.new({
-'name' => "Mobile Phone Bill"
+'name' => 'Mobile Phone Bill'
 })
+
 category5 = Category.new({
-'name' => "Eating Out"
+'name' => 'Eating Out'
 })
+
 category6 = Category.new({
-'name' => "Clothes"
+'name' => 'Clothes'
 })
+
 category7 = Category.new({
-'name' => "Cinema"
+'name' => 'Cinema'
 })
 
 category1.save

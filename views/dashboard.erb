@@ -1,4 +1,27 @@
-<h1>welcome <%= "#{@user.first_name}" %> </h1>
+<div class="welcome-tag">
+<p>Welcome <%= "#{@user.first_name}" %></p>
+</div>
+
+<p>Your budget is: <%= @user.budget %></p>
+
+<p>Total spend: <%= @user.total_spend %></p>
+
+<hr />
+
+<p>Spend by category:</p>
+
+
+<% @user.spend_by_category.map do |total| %>
+
+<p><%=total['name'] %> : <%=total['sum'].to_f %></p>
+<p>View all transactions for <%=total['name'] %> </p>
+<a href="sub_category_id">View all transactions for <%=total['name'] %> </a>
+<hr />
+
+<% end %>
+
+
+
 
 
 

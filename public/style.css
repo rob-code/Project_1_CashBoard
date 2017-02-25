@@ -21,3 +21,10 @@ background-color: #753434;
 width: 100%;
 color: #121212;
 }
+
+.welcome-tag > p {
+font-size: 10;
+text-align: right;
+padding-right: 5%;
+color: green;
+}

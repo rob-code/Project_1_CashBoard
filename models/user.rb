@@ -11,6 +11,12 @@ class User
     @second_name = options['second_name']
   end
 
+  def budget
+    sql = "SELECT budgets.* FROM budgets WHERE budgets.user_id = #{@id}"
+    budget = SqlRunner.run(sql).first
+    return budget['total_budget']
+  end
+
   def transactions
     sql = "SELECT transactions.* FROM 
     transactions WHERE transactions.user_id = #{@id}"
@@ -25,11 +31,11 @@ class User
 
   def spend_by_category
     sql = "SELECT categories.name, SUM(transactions.amount) FROM transactions INNER JOIN categories ON categories.id = transactions.category_id WHERE transactions.user_id = #{@id} GROUP BY categories.name;"
-    totals = SqlRunner.run(sql)
-  # totals.map do |total|
-  #   puts "#{total['name']} = #{total['sum']}"
-  # end 
-end
+    return totals = SqlRunner.run(sql)
+ #  totals.map do |total|
+ #    puts "#{total['name']} = #{total['sum']}"
+ # end 
+  end
 
 def save
   sql = "INSERT INTO users (first_name, second_name) VALUES ('#{@first_name}', '#{@second_name}') RETURNING id"
