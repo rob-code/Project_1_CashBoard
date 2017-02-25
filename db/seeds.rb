@@ -36,9 +36,6 @@ budget2 = Budget.new({
 budget1.save
 budget2.save
 
-
-
-
 category1 = Category.new({
 'name' => "Food"
 })
@@ -98,11 +95,6 @@ target3.save
 target4.save
 
 
-
-
-
-
-
 transaction1 = Transaction.new({
 'merchant_name' => "Waitrose",
 'amount' => 37,
@@ -134,11 +126,43 @@ transaction5 = Transaction.new({
 'user_id' => user1.id
 })
 
+
+transaction6 = Transaction.new({
+'merchant_name' => "Lidl",
+'amount' => 190,
+'category_id' => category1.id,
+'user_id' => user1.id
+})
+
+transaction7 = Transaction.new({
+'merchant_name' => "Tesco",
+'amount' => 120,
+'category_id' => category1.id,
+'user_id' => user1.id
+})
+transaction8 = Transaction.new({
+'merchant_name' => "TalkTalk",
+'amount' => 120,
+'category_id' => category4.id,
+'user_id' => user1.id
+})
+transaction9 = Transaction.new({
+'merchant_name' => "Pizza Express",
+'amount' => 120,
+'category_id' => category5.id,
+'user_id' => user1.id
+})
+
+
 transaction1.save
 transaction2.save
 transaction3.save
 transaction4.save
 transaction5.save
+transaction6.save
+transaction7.save
+transaction8.save
+transaction9.save
 
 binding.pry
 nil

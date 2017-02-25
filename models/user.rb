@@ -24,10 +24,10 @@ class User
   end
 
 def spend_by_category
-sql = "SELECT transactions.category_id, SUM(transactions.amount) FROM transactions WHERE transactions.user_id = #{@id} GROUP BY transactions.category_id"
+sql = "SELECT categories.name, SUM(transactions.amount) FROM transactions INNER JOIN categories ON categories.id = transactions.category_id WHERE transactions.user_id = #{@id} GROUP BY categories.name;"
   totals = SqlRunner.run(sql)
   totals.map do |total|
-    puts "#{total['category_id']} and #{total['sum']}"
+    puts "#{total['name']} = #{total['sum']}"
   end 
 end
 
