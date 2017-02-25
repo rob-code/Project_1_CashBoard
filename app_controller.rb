@@ -17,5 +17,9 @@ get '/login/:id' do
 erb(:dashboard)
 end
 
+get '/sub_cat/:id/:cat_id' do
+
+erb(:category)
+end
 
 
