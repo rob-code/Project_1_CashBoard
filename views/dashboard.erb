@@ -2,20 +2,18 @@
 <p>Welcome <%= "#{@user.first_name}" %></p>
 </div>
 
-<p>Your budget is: <%= @user.budget %></p>
+<p>Your budget is: £ <%= @user.budget %></p>
 
-<p>Total spend: <%= @user.total_spend %></p>
+<p>Total spend: £ <%= @user.total_spend %></p>
 
-<hr />
 
 <p>Spend by category:</p>
 
 
 <% @user.spend_by_category.map do |total| %>
 
-<p><%=total['name'] %> : <%=total['sum'].to_f %> </p>
-<p>View all transactions for <%=total['name'] %> </p>
-<a href="/sub_cat/<%= @user.id %>/<%= total['id'] %> ">View all transactions for <%=total['name'] %> </a>
+<p><%=total['name'] %> : £ <%=total['sum'].to_f %> </p>
+<a href="/sub_cat/<%= @user.id %>/<%= total['id'] %> ">View/Edit all transactions for <%=total['name'] %> </a>
 <hr />
 
 <% end %>

@@ -7,6 +7,10 @@ require('./models/category.rb')
 require('./models/target.rb')
 require('./models/transaction.rb')
 
+get '/landing' do
+erb(:landing)
+end
+
 get '/login' do
 @users = User.all
 erb(:index)
