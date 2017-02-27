@@ -21,6 +21,21 @@ get '/login/:id' do
   erb(:dashboard)
 end
 
+get '/transactions/:id/edit' do
+
+
+end  
+
+post '/transactions/:transaction_id/:user_id/:cat_id/delete' do
+  Transaction.delete_by_id(params[:transaction_id])
+  @transactions = Transaction.subcategories(params[:user_id], params[:cat_id])
+  @user = User.return_by_id(params[:user_id])
+  @category = Category.return_by_id(params[:cat_id])
+  erb(:category)
+end  
+
+
+
 get '/new_transaction/:id' do
   @user = User.return_by_id(params[:id])
   @categories = Category.all
