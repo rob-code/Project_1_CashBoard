@@ -2,10 +2,28 @@
 <p>Welcome <%= "#{@user.first_name}" %></p>
 </div>
 
+<div class="head-result">
+
 <p>Your budget is: £ <%= @user.budget %></p>
 
 <p>Total spend: £ <%= @user.total_spend %></p>
 
+<p>Amount remaining £ <%= "#{@user.budget.to_f - @user.total_spend.to_f}" %></p>
+
+<hr />
+
+<p><a href="/new_transaction/<%= @user.id %>">Enter new transaction</a></p>
+
+<hr />
+
+<hr />
+
+<p><a href="/new_transaction/<%= @user.id %>">View all transactions</a></p>
+
+<hr />
+
+
+</div>
 
 <p>Spend by category:</p>
 

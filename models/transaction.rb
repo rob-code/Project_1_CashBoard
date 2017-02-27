@@ -13,15 +13,16 @@ class Transaction
     @user_id = options['user_id'].to_i
   end
 
-
+  def self.all_for_user(user_id)
+    sql = "SELECT * FROM transactions WHERE user_id = #{user_id}"
+    return self.get_many(sql)
+  end
 
 
   def self.subcategories(user_id, cat_id)
     sql = "SELECT * FROM transactions WHERE user_id = #{user_id} AND category_id = #{cat_id}"
     return self.get_many(sql)
   end
-
-
 
   def save()
     sql = "INSERT INTO transactions (merchant_name, amount, category_id, user_id) VALUES ('#{@merchant_name}', #{@amount}, #{@category_id}, #{@user_id})RETURNING id"

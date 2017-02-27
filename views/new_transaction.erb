@@ -1,0 +1,28 @@
+<p>Create a new transaction</p>
+
+<form method="POST" action="/new_transaction/">
+
+<label for="merchant_name">Merchant Name:</label>
+<input type="text" id = "merchant_name" name="merchant_name"/>
+  
+<label for="amount">Amount</label>
+<input type = "number" name="amount" id="amount"/>
+
+
+
+  <label for="category_id">Transaction Category:</label>
+
+  <select id="category_id" name="category_id">
+    <% @categories.map do |category| %>
+    <option value=<%="'#{category.id}'>#{category.name}"%></option>
+    <% end %>
+  </select>
+
+  <input type="hidden" name="user_id" id="user_id" value="<%= @user.id %>"/>
+
+  <input type="submit" value="Create Transaction"/>
+
+</form>
+
+
+

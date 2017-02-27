@@ -1,0 +1,10 @@
+<p>Thanks <%= @user.first_name %>, your transaction has been created.</p>
+
+<p>Details:</p>
+
+<p>Amount: £ <%= @transaction.amount %></p>
+<p>Category: <%= @category.name %></p>
+<p>Merchant Name: <%= @transaction.merchant_name %></p>
+
+
+<p><a href="/login/<%= @transaction.user_id %>">Return to Cashboard</a></p>
