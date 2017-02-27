@@ -11,6 +11,13 @@ class Budget
     @user_id = options['user_id'].to_i
   end
 
+  def self.budget_by_user(id_required)
+    sql = "SELECT * FROM budgets WHERE user_id = #{id_required}"
+    budget = SqlRunner.run(sql)
+    result = Budget.new(budget.first)
+    return result
+  end
+
   def save
     sql = "INSERT INTO budgets (total_budget, user_id) VALUES (#{@total_budget}, #{@user_id}) RETURNING id"
     user = SqlRunner.run(sql).first
@@ -29,7 +36,9 @@ class Budget
 
   def self.return_by_id(id_required)
     sql = "SELECT * FROM budgets WHERE id = #{id_required}"
-    return SqlRunner.run(sql)
+    budget = SqlRunner.run(sql)
+    result = Budget.new(budget.first)
+    return result
   end
 
   def update()

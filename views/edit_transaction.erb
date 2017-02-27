@@ -1,18 +1,18 @@
 <div class="welcome-tag">
-<p>Welcome <%= "#{@user.first_name}" %></p>
+  <p>Welcome <%= "#{@user.first_name}" %></p>
 </div>
 
 <p><%= @user.first_name %>, lets edit this transaction:</p>
 
 <form method="POST" action="/transactions/edit">
 
-<input type="hidden" name="transaction_id" id="transaction_id" value="<%= @transaction.id %>"/>
+  <input type="hidden" name="transaction_id" id="transaction_id" value="<%= @transaction.id %>"/>
 
-<label for="merchant_name">Merchant Name:</label>
-<input type="text" id = "merchant_name" name="merchant_name" value=<%= @transaction.merchant_name %>>
+  <label for="merchant_name">Merchant Name:</label>
+  <input type="text" id = "merchant_name" name="merchant_name" value=<%= @transaction.merchant_name %>>
   
-<label for="amount">Amount</label>
-<input type = "number" name="amount" id="amount" value=<%= @transaction.amount %> />
+  <label for="amount">Amount</label>
+  <input type = "number" name="amount" id="amount" value=<%= @transaction.amount %> />
 
   <label for="category_id">Transaction Category:</label>
 

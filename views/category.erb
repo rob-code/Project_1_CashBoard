@@ -6,7 +6,7 @@
 
 <% @transactions.map do |transaction| %>
 
-<p><%=transaction.merchant_name %> : £ <%=transaction.amount %> </p>
+<p><%=transaction.merchant_name %> : £ <%= sprintf("%20.2f", transaction.amount) %> </p>
 
 
 <form method="GET" action="/transactions/<%= transaction.id %>/<%= @user.id %>/edit">

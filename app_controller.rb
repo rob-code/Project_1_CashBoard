@@ -21,6 +21,24 @@ get '/login/:id' do
   erb(:dashboard)
 end
 
+post '/edit_targets/:id' do
+  @budget = Budget.return_by_id(params[:budget_id])
+  @budget.total_budget = params[:total_budget]
+  @budget.update
+  @user = User.return_by_id(params[:user_id])
+  erb(:dashboard)
+end
+
+get '/edit_targets/:id' do
+  @user = User.return_by_id(params[:id])
+  @budget = Budget.budget_by_user(params[:id])
+  puts @budget.user_id
+  @targets = Target.target_by_user(params[:id])
+  @categories = Category.all
+  erb(:edit_targets)
+end
+
+
 get '/transactions/:transaction_id/:user_id/edit' do
   @transaction = Transaction.return_by_id(params[:transaction_id])
   @user = User.return_by_id(params[:user_id])

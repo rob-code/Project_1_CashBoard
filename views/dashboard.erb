@@ -4,20 +4,21 @@
 
 <div class="head-result">
 
-<p>Your budget is: £ <%= @user.budget %></p>
+<p>Your budget is: £ <%= sprintf("%20.2f", @user.budget) %></p>
 
-<p>Total spend: £ <%= @user.total_spend %></p>
+<p>Total spend: £ <%= sprintf("%20.2f", @user.total_spend) %></p>
 
-<p>Amount remaining £ <%= "#{@user.budget.to_f - @user.total_spend.to_f}" %></p>
+<p>Amount remaining £ <%= sprintf("%20.2f", @user.budget.to_f - @user.total_spend.to_f) %></p>
 
 <hr />
 
-<p><a href="/new_transaction/<%= @user.id %>">Enter new transaction</a></p>
+<p><a href="/new_transaction/<%= @user.id %>">Create new transaction</a></p>
 
 <p><a href="/all_transactions/<%= @user.id %>">View all transactions</a></p>
 
-<hr />
+<p><a href="/edit_targets/<%= @user.id %>">Edit spending targets</a></p>
 
+<hr />
 
 </div>
 
@@ -26,7 +27,7 @@
 
 <% @user.spend_by_category.map do |total| %>
 
-<p><%=total['name'] %> : £ <%=total['sum'].to_f %> </p>
+<p><%=total['name'] %> : £ <%=sprintf("%20.2f", total['sum'].to_f) %> </p>
 <a href="/sub_cat/<%= @user.id %>/<%= total['id'] %> ">View/Edit all transactions for <%=total['name'] %> </a>
 <hr />
 

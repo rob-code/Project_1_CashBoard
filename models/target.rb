@@ -12,6 +12,13 @@ class Target
     @user_id = options['user_id'].to_i
   end
 
+def self.target_by_user(id_required)
+  sql = "SELECT * FROM targets WHERE user_id = #{id_required}"
+  target = SqlRunner.run(sql)
+  result = Target.new(target.first)
+  return result
+end
+
   def save
     sql = "INSERT INTO targets (amount, category_id, user_id) VALUES (#{@amount}, #{@category_id}, #{@user_id}) RETURNING id"
     user = SqlRunner.run(sql).first

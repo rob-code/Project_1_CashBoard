@@ -1,0 +1,15 @@
+</p><%= @user.first_name %>, edit your spending target:</p>
+
+<form method="POST" action="/edit_targets/<%= @user.id %>" />
+
+<input type="hidden" name="budget_id" id="budget_id" value="<%= @budget.id %>"/>
+
+<label for="total_budget">Total budget : </label>
+<input type = "number" name="total_budget" id="total_budget" value=<%= @budget.total_budget %> />
+
+<input type="hidden" name="user_id" id="user_id" value="<%= @user.id %>"/>
+
+<input type="submit" value="Edit Budget"/>
+
+</form>
+
