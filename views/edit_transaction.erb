@@ -4,4 +4,36 @@
 
 <p><%= @user.first_name %>, lets edit this transaction:</p>
 
+<form method="POST" action="/confirm_new_transaction/">
+
+
+<input type="hidden" name="id" id="id" value="<%= @transaction.id %>"/>
+
+
+<label for="merchant_name">Merchant Name:</label>
+<input type="text" id = "merchant_name" name="merchant_name" value=<%= @transaction.merchant_name %>>
+
+
+
+
+  
+<label for="amount">Amount</label>
+<input type = "number" name="amount" id="amount" value=<%= @transaction.amount %> />
+
+
+
+  <label for="category_id">Transaction Category:</label>
+
+  <select id="category_id" name="category_id">
+    <% @categories.map do |category| %>
+    <option value="<%= category.id %>" <%= selected="selected" if @transaction.category_id == category.id %> > <%= category.name %> </option>
+    <% end %>
+
+  </select>
+
+  <input type="hidden" name="user_id" id="user_id" value="<%= @user.id %>"/>
+
+  <input type="submit" value="Edit Transaction"/>
+
+</form>
 

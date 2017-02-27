@@ -21,10 +21,10 @@ get '/login/:id' do
   erb(:dashboard)
 end
 
-get '/transactions/:transaction_id/:user_id/:cat_id/edit' do
+get '/transactions/:transaction_id/:user_id/edit' do
   @transaction = Transaction.return_by_id(params[:transaction_id])
   @user = User.return_by_id(params[:user_id])
-  @category = Category.return_by_id(params[:cat_id])
+  @categories = Category.all
   erb(:edit_transaction)
 end  
 

@@ -9,7 +9,7 @@
 <p><%=transaction.merchant_name %> : £ <%=transaction.amount %> </p>
 
 
-<form method="GET" action="/transactions/<%= transaction.id %>/<%= @user.id %>/<%= @category.id %>/edit">
+<form method="GET" action="/transactions/<%= transaction.id %>/<%= @user.id %>/edit">
 <input class="button" type="submit" value="Edit">
 </form>
 
