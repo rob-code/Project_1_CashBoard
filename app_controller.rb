@@ -28,6 +28,16 @@ get '/transactions/:transaction_id/:user_id/edit' do
   erb(:edit_transaction)
 end  
 
+post '/transactions/edit' do
+  @transaction = Transaction.return_by_id(params[:transaction_id])
+  @transaction.merchant_name = params[:merchant_name]
+  @transaction.amount = params[:amount]
+  @transaction.category_id = params[:category_id]
+  @transaction.update()
+  @user = User.return_by_id(params[:user_id])
+  erb(:dashboard)
+end
+
 post '/transactions/:transaction_id/:user_id/:cat_id/delete' do
   Transaction.delete_by_id(params[:transaction_id])
   @transactions = Transaction.subcategories(params[:user_id], params[:cat_id])
