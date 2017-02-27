@@ -1,0 +1,22 @@
+<p><%= @user.first_name %>, these are all your transactions:</p>
+
+<% @categories.map do |category| %>
+
+<% title = true %>
+
+<% @transactions.map do |transaction| %>
+
+<% if transaction.category_id == category.id %>
+
+<% if title  %>
+<%= "#{category.name}:</p>" %>
+<% end %>
+<% title = false %>
+
+<p><%=transaction.merchant_name %> : £ <%=transaction.amount %> </p>
+<% end %>
+
+
+<% end %>
+
+<% end %>
