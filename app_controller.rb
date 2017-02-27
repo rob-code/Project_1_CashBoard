@@ -21,9 +21,11 @@ get '/login/:id' do
   erb(:dashboard)
 end
 
-get '/transactions/:id/edit' do
-
-
+get '/transactions/:transaction_id/:user_id/:cat_id/edit' do
+  @transaction = Transaction.return_by_id(params[:transaction_id])
+  @user = User.return_by_id(params[:user_id])
+  @category = Category.return_by_id(params[:cat_id])
+  erb(:edit_transaction)
 end  
 
 post '/transactions/:transaction_id/:user_id/:cat_id/delete' do
@@ -31,10 +33,8 @@ post '/transactions/:transaction_id/:user_id/:cat_id/delete' do
   @transactions = Transaction.subcategories(params[:user_id], params[:cat_id])
   @user = User.return_by_id(params[:user_id])
   @category = Category.return_by_id(params[:cat_id])
-  erb(:category)
+  erb(:dashboard)
 end  
-
-
 
 get '/new_transaction/:id' do
   @user = User.return_by_id(params[:id])
